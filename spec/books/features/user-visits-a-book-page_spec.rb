@@ -10,6 +10,7 @@ RSpec.describe "User visits a book page", :type => :feature do
     click_link(book2.title)
 
     expect(page).to have_content(book2.title)
+    expect(page).to have_content(book2.subtitle)
   end
 end
 
