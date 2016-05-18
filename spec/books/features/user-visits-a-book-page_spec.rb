@@ -16,7 +16,7 @@ RSpec.describe "User visits a book page", :type => :feature do
 
     expect(page).to have_content(book.title)
     expect(page).to have_content(book.subtitle)
-    expect(page).to have_content("Published: January 01, 1873")
+    expect(page).to have_content("Published: #{book.publish_date.strftime('%B %d, %Y')}")
   end
 end
 
