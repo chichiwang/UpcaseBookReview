@@ -1,5 +1,5 @@
 module BookHelpers
-  def create_book(title = "Title")
-    FactoryGirl.create(:book, title: title)
+  def create_book(opts = {})
+    FactoryGirl.create(:book, opts)
   end
 end
