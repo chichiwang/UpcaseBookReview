@@ -2,15 +2,21 @@ require "rails_helper"
 
 RSpec.describe "User visits a book page", :type => :feature do
   it "provides details for a single book" do
-    book1 = create_book({ title: "A Tale of Two Cities", subtitle: "Full of Sound and Fury" })
-    book2 = create_book({ title:  "Huckleberry Finn", subtitle: "The Watership Is Going Down" })
+    book_details = {
+      title:  "Huckleberry Finn",
+      subtitle: "The Watership Is Going Down",
+      publish_date: Date.new(1873, 1, 1)
+    }
+
+    book = create_book(book_details)
 
     visit root_path
     click_link "Books"
-    click_link(book2.title)
+    click_link(book.title)
 
-    expect(page).to have_content(book2.title)
-    expect(page).to have_content(book2.subtitle)
+    expect(page).to have_content(book.title)
+    expect(page).to have_content(book.subtitle)
+    expect(page).to have_content("January 01, 1873")
   end
 end
 
