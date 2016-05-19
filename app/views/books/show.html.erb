@@ -1,0 +1,5 @@
+<%= @book.title %>
+<%= @book.subtitle %>
+Published: <%= @book.publish_date.strftime('%B %d, %Y') %>
+<%= @book.summary %>
+<img src="<%= @book.cover_img_url %>">
