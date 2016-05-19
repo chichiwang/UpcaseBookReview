@@ -4,7 +4,6 @@ require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
-require 'support/books'
 require 'rspec/rails'
 require 'capybara/rails'
 
@@ -56,5 +55,32 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  config.include BookHelpers
+  def curr_path
+    File.expand_path('../', __FILE__)
+  end
+
+  def support_files
+    Dir.glob(support_dir)
+  end
+
+  def support_dir
+    File.join(curr_path, "support", "*.rb")
+  end
+
+  def helper(file_path)
+    helper_name(file_name(file_path)).constantize
+  end
+
+  def file_name(file_path)
+    file_path.split(File::SEPARATOR).last
+  end
+
+  def helper_name(file_name)
+    file_name.split('.').first.capitalize << 'Helpers'
+  end
+
+  support_files.each do |file|
+    require(file)
+    config.include helper(file)
+  end
 end
