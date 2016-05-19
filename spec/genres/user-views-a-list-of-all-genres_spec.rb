@@ -1,5 +1,8 @@
 require "rails_helper"
 
+def create_genre(whatever)
+end
+
 RSpec.describe "User views a list of all genres", :type => :feature do
   it "displays a list of all genres" do
     genre1 = create_genre(name: 'Western')
