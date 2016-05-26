@@ -7,7 +7,7 @@ RSpec.describe "User views a list of all genres", :type => :feature do
 
     visit genres_path
 
-    expect(page).to have_link(genre1.name, href: '/genres/#{genre1.id}')
-    expect(page).to have_link(genre2.name, href: '/genres/#{genre2.id}')
+    expect(page).to have_link(genre1.name, href: "/genres/#{genre1.id}")
+    expect(page).to have_link(genre2.name, href: "/genres/#{genre2.id}")
   end
 end
