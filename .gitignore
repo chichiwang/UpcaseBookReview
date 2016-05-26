@@ -17,5 +17,6 @@
 /tmp
 
 .DS_STORE
+*.swp
 tags
 logfile
