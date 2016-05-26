@@ -8,6 +8,6 @@ class CreateGenreTable < ActiveRecord::Migration
   def down
     execute %{
       DROP TABLE IF EXISTS genres
-    }
+   }
   end
 end
