@@ -10,6 +10,6 @@ class AddNameColumnToGenresTable < ActiveRecord::Migration
     execute %{
       ALTER TABLE genres
         DROP COLUMN name
-    }
+   }
   end
 end
