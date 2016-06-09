@@ -6,6 +6,9 @@ class GenresController < ApplicationController
 
   def show
     @genre = Genre.find params[:id]
+    @books = @genre.books.map do |book|
+      Book.find book.book_id
+    end
   end
 end
 
