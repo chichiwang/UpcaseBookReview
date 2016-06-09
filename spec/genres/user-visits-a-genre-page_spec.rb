@@ -16,7 +16,7 @@ RSpec.describe "User visits a genre page", :type => :feature do
     click_link(genre.name)
 
     expect(page).to have_content(genre.name)
-    expect(page).to have_link(book.name, href: book_path(book.id))
+    expect(page).to have_link(book.title, href: book_path(book.id))
   end
 end
 
