@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160608232610) do
+ActiveRecord::Schema.define(version: 20160609002448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,9 +26,18 @@ ActiveRecord::Schema.define(version: 20160608232610) do
     t.text     "cover_img_url"
   end
 
+  create_table "books_genres", id: false, force: :cascade do |t|
+    t.integer  "book_id",    null: false
+    t.integer  "genre_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "genres", force: :cascade do |t|
     t.text "name"
     t.text "description"
   end
 
+  add_foreign_key "books_genres", "books", name: "books_genres_book_id_fkey"
+  add_foreign_key "books_genres", "genres", name: "books_genres_genre_id_fkey"
 end
