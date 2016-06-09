@@ -8,7 +8,7 @@ RSpec.describe "User visits a genre page", :type => :feature do
     }
     genre = create_genre(genre_details)
 
-    book = create_book( title: "Twi-lizzle", genre: "Vampire Bromance")
+    book = create_book( title: "Twi-lizzle", genres: "Vampire Bromance")
 
     visit root_path
     click_link "Genres"

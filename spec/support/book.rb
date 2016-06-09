@@ -3,3 +3,4 @@ module BookHelpers
     FactoryGirl.create(:book, opts)
   end
 end
+
