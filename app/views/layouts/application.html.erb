@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>UpcaseBookReview</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <title>UpcaseBookReview</title>
+    <link rel="stylesheet" type="text/css" href="/assets/styles/core.css">
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= yield %>
+    <script type="text/javascript" src="/assets/scripts/core.js"></script>
+  </body>
 </html>

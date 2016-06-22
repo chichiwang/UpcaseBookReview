@@ -38,4 +38,9 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  config.before_initialize do
+    webpack_pid = spawn('cd client && npm start')
+    Process.detach(webpack_pid) if webpack_pid
+  end
 end
