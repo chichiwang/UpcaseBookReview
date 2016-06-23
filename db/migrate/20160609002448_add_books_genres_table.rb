@@ -3,7 +3,7 @@ class AddBooksGenresTable < ActiveRecord::Migration
     execute <<-SQL
       CREATE TABLE IF NOT EXISTS books_genres(
         book_id int NOT NULL references books(id),
-        genre_id intNOT NULL references genres(id),
+        genre_id int NOT NULL references genres(id),
         created_at timestamp NOT NULL,
         updated_at timestamp NOT NULL
       )
