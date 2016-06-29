@@ -1,5 +1,5 @@
 const path = require('path');
-const modulesDir = path.join(__dirname, '../modules');
+const modulesDir = path.join(__dirname, '../../modules');
 
 const moduleEntries = [
   'core',

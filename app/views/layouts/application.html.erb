@@ -2,7 +2,9 @@
 <html>
   <head>
     <title>UpcaseBookReview</title>
-    <link rel="stylesheet" type="text/css" href="/assets/styles/core.css">
+    <% unless Rails.env.development? %>
+      <link rel="stylesheet" type="text/css" href="/assets/styles/core.css">
+    <% end %>
     <%= csrf_meta_tags %>
   </head>
   <body>
