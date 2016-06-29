@@ -40,7 +40,12 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.before_initialize do
-    webpack_pid = spawn('cd client && npm start')
-    Process.detach(webpack_pid) if webpack_pid
+    begin
+      !!Rails::Server # Is this a server task?
+      webpack_pid = spawn('cd client && npm start')
+      Process.detach(webpack_pid) if webpack_pid
+    rescue NameError
+      # No Op
+    end
   end
 end
