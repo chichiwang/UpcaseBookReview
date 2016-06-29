@@ -2,13 +2,11 @@
 <html>
   <head>
     <title>UpcaseBookReview</title>
-    <% unless Rails.env.development? %>
-      <link rel="stylesheet" type="text/css" href="/assets/styles/core.css">
-    <% end %>
     <%= csrf_meta_tags %>
+    <%= render "layouts/styles" %>
   </head>
   <body>
     <%= yield %>
-    <script type="text/javascript" src="/assets/scripts/core.js"></script>
+    <%= render "layouts/scripts" %> 
   </body>
 </html>
