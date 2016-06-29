@@ -21,6 +21,14 @@ function createElement(tag = 'div', options = {}) {
   return el;
 }
 
+function prependTo($target, ...$elsToPrepend) {
+  const $els = $elsToPrepend.reverse();
+  $els.forEach(function($el) {
+    $target.insertBefore($el, $target.childNodes[0]);
+  });
+}
+
 export default {
   createElement,
+  prependTo,
 }
