@@ -38,17 +38,4 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-
-  # Run the webpack-dev-server when running rails server
-  config.before_initialize do
-    begin
-      !!Rails::Server # Is this a server task?
-      if Rails.env.development?
-        webpack_pid = spawn('cd client && npm run clean && npm start')
-        Process.detach(webpack_pid) if webpack_pid
-      end
-    rescue NameError
-      # No Op
-    end
-  end
 end

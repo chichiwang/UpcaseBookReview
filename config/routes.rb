@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :genres, only: [:index, :show]
 
   # Redirect js asset request to the webpack-dev-server
-  if Rails.env.development?
+  unless Rails.env.production?
     get '/assets/scripts/:file.js', to: redirect { |p|
       "http://127.0.0.1:8080/assets/scripts/#{p[:file]}.js"
     }

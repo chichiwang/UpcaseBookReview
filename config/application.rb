@@ -31,5 +31,19 @@ module UpcaseBookReview
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Run the webpack-dev-server when running rails server
+    config.before_initialize do
+      begin
+        unless Rails.env.production?
+          !!Rails::Server # Is this a server task?
+          webpack_pid = spawn('cd client && npm run clean && npm start')
+          Process.detach(webpack_pid) if webpack_pid
+        end
+      rescue NameError
+        # No Op
+      end
+    end
+
   end
 end
