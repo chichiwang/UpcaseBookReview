@@ -3,8 +3,6 @@ import El from 'util/elements';
 import classes from './index.styl';
 import world from './world';
 
-const $body = window.document.body;
-
 const helloOptions = {
   text: `Hello ${world}!`,
   attributes: {
@@ -19,7 +17,12 @@ const subHelloOptions = {
   },
 };
 
-const $hello = El.createElement('h1', helloOptions);
-const $subHello = El.createElement('p', subHelloOptions);
-const $headline = El.frag($hello, $subHello);
-El.prependTo($body, $headline);
+function create() {
+  const $hello = El.createElement('h1', helloOptions);
+  const $subHello = El.createElement('p', subHelloOptions);
+  return El.frag($hello, $subHello);
+}
+
+export default {
+  create,
+};

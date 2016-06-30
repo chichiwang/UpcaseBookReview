@@ -1,13 +1,19 @@
 const path = require('path');
-const modulesDir = path.join(__dirname, '../../modules');
+const appsDir = path.join(__dirname, '../../apps');
 
-const moduleEntries = [
-  'core',
+const coreEntry = {
+  core: [
+    path.join(appsDir, 'core'),
+    'babel-polyfill',
+  ],
+};
+
+const appsEntries = [
 ];
 
-const entries = moduleEntries.reduce((memo, entry) => {
-  memo[entry] = path.join(modulesDir, entry);
+const entries = appsEntries.reduce((memo, entry) => {
+  memo[entry] = path.join(appsDir, entry);
   return memo;
 }, {});
 
-module.exports = entries;
+module.exports = Object.assign({}, coreEntry, entries);

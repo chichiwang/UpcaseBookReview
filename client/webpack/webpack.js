@@ -5,7 +5,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const resolve = require('./config/resolve.js');
 const entries = require('./config/entries');
 const loaders = require('./config/loaders.js');
-console.log('entries: ', entries);
 
 const nodeModulesDir = path.join(__dirname, '../node_modules');
 const filename = '[name]';
