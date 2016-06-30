@@ -43,8 +43,10 @@ Rails.application.configure do
   config.before_initialize do
     begin
       !!Rails::Server # Is this a server task?
-      webpack_pid = spawn('cd client && npm start')
-      Process.detach(webpack_pid) if webpack_pid
+      if Rails.env.development?
+        webpack_pid = spawn('cd client && npm run clean && npm start')
+        Process.detach(webpack_pid) if webpack_pid
+      end
     rescue NameError
       # No Op
     end
