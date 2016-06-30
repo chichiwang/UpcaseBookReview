@@ -21,4 +21,5 @@ const subHelloOptions = {
 
 const $hello = El.createElement('h1', helloOptions);
 const $subHello = El.createElement('p', subHelloOptions);
-El.prependTo($body, $hello, $subHello);
+const $headline = El.frag($hello, $subHello);
+El.prependTo($body, $headline);

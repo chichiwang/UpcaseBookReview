@@ -5,30 +5,56 @@
   *   text: (string) text within the textnode of the tag
  */
 function createElement(tag = 'div', options = {}) {
-  const el = window.document.createElement(tag);
+  const $el = window.document.createElement(tag);
+  setAttributes($el, options.attributes);
+  if (!!options.text) text($el, options.text);
+  return $el;
+}
 
-  if (options.attributes) {
-    Object.keys(options.attributes).forEach((key) => {
-      el.setAttribute(key, options.attributes[key]);
+function setAttribute($el, attr, val) {
+  $el.setAttribute(attr, val);
+}
+
+function setAttributes($el, attributes = {}) {
+  const keys = Object.keys(attributes);
+  if (!!keys.length) {
+    keys.forEach(function(key) {
+      $el.setAttribute(key, attributes[key]);
     });
   }
+}
 
-  if (!!options.text) {
-    const textNode = window.document.createTextNode(options.text);
-    el.appendChild(textNode);
-  }
+function text($el, textVal) {
+  const textNode = window.document.createTextNode(textVal);
+  $el.appendChild(textNode);
+}
 
-  return el;
+function appendTo($target, ...$elsToPrepend) {
+  $elsToPrepend.forEach(function($el) {
+    $target.appendChild($el);
+  });
 }
 
 function prependTo($target, ...$elsToPrepend) {
-  const $els = $elsToPrepend.reverse();
-  $els.forEach(function($el) {
+  $elsToPrepend.forEach(function($el) {
     $target.insertBefore($el, $target.childNodes[0]);
   });
 }
 
+function frag(...$els) {
+  const $frag = window.document.createDocumentFragment();
+  $els.forEach(function($el) {
+    $frag.appendChild($el);
+  });
+  return $frag;
+}
+
 export default {
   createElement,
+  setAttribute,
+  setAttributes,
+  text,
+  appendTo,
   prependTo,
+  frag,
 }
