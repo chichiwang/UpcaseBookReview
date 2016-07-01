@@ -8,5 +8,9 @@ class GenresController < ApplicationController
     @genre = Genre.find params[:id]
     @books = @genre.books
   end
+
+  def new
+    # hello!
+  end
 end
 

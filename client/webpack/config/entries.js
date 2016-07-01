@@ -9,6 +9,7 @@ const coreEntry = {
 };
 
 const appsEntries = [
+  'genres/new',
 ];
 
 const entries = appsEntries.reduce((memo, entry) => {
