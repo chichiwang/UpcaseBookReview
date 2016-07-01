@@ -3,24 +3,30 @@ import El from 'util/elements';
 import classes from './index.styl';
 import world from './world';
 
-const helloOptions = {
-  text: `Hello ${world}!`,
+const headerOptions = {
   attributes: {
-    "class": classes.helloWorld,
+    "class": classes.headerNavigation,
   },
 };
 
-const subHelloOptions = {
-  text: "From the world of javascript",
+const titleOptions = {
+  text: "Upcase: Book Review",
   attributes: {
-    "class": classes.subHello,
+    "class": "title",
   },
 };
+
 
 function create() {
-  const $hello = El.createElement('h1', helloOptions);
-  const $subHello = El.createElement('p', subHelloOptions);
-  return El.frag($hello, $subHello);
+  const $header = El.createElement('header', headerOptions);
+  const $title = El.createElement('h1', titleOptions);
+  const $link = El.createElement('a');
+  El.setAttribute($link, "href", "/")
+
+  El.appendTo($link, $title);
+  El.appendTo($header, $link);
+
+  return $header;
 }
 
 export default {

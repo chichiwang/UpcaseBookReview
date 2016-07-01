@@ -6,7 +6,10 @@
     <%= render "layouts/styles" %>
   </head>
   <body>
-    <%= yield %>
+    <div class="content-wrapper">
+      <%= yield %>
+    </div>
+
     <%= render "layouts/scripts" %> 
   </body>
 </html>

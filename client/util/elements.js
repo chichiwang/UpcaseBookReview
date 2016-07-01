@@ -29,6 +29,11 @@ function text($el, textVal) {
   $el.appendChild(textNode);
 }
 
+function renderInto($target, ...$els) {
+  $target.innerHTML = '';
+  appendTo($target, ...$els);
+}
+
 function appendTo($target, ...$elsToPrepend) {
   $elsToPrepend.forEach(function($el) {
     $target.appendChild($el);
@@ -54,6 +59,7 @@ export default {
   setAttribute,
   setAttributes,
   text,
+  renderInto,
   appendTo,
   prependTo,
   frag,
