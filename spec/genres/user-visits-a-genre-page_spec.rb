@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "User visits a genre page", :type => :feature do
-  it "lists all the books in the given genre" do
+  it "lists all the books in the given genre", :js do
     genre_details = {
       name: "Vampire Bromance",
       description: "Think \"From Dusk Til Dawn\" meets \"Boondock Saints\""

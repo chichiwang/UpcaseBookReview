@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "User visits a book page", :type => :feature do
-  it "provides details for a single book" do
+  it "provides details for a single book", :js do
     book_details = {
       title:  "Huckleberry Finn",
       subtitle: "The Watership Is Going Down",
