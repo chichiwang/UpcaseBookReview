@@ -35,13 +35,17 @@ module UpcaseBookReview
     # Run the webpack-dev-server when running rails server
     config.before_initialize do
       begin
+        webpack = Rails.root.join('public', 'assets', 'scripts')
+        webpack_dir_exists = File.directory?(webpack)
         unless Rails.env.production?
           !!Rails::Server # Is this a server task?
           webpack_pid = spawn('cd client && npm run clean && npm start')
           Process.detach(webpack_pid) if webpack_pid
         end
       rescue NameError
-        # No Op
+        if Rails.env.test? && !webpack_dir_exists
+          system 'cd client && npm run build'
+        end
       end
     end
 
